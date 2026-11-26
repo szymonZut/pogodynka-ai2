@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+ 
+{% block title %}Prognoza pogody{% endblock %}
+ 
+{% block body %}
+<h1>Prognoza z OpenMeteo</h1>
+ 
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+    {{ form_end(form) }}
+ 
+    {% if weather_data is not null %}
+<h2>Wyniki</h2>
+<table border="1" cellpadding="5">
+<tr>
+<th>Data</th>
+<th>Temp. max</th>
+<th>Temp. min</th>
+<th>Opady</th>
+</tr>
+            {% for i in 0..(weather_data.daily.time|length - 1) %}
+<tr>
+<td>{{ weather_data.daily.time[i] }}</td>
+<td>{{ weather_data.daily.temperature_2m_max[i] }}</td>
+<td>{{ weather_data.daily.temperature_2m_min[i] }}</td>
+<td>{{ weather_data.daily.precipitation_sum[i] }}</td>
+</tr>
+            {% endfor %}
+</table>
+    {% endif %}
+{% endblock %}

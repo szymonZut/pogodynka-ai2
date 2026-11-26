@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Test TextInputController!{% endblock %}
+
+{% block body %}
+<h1>Formularz tekstowy</h1>
+ 
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+    {{ form_end(form) }}
+ 
+    {% if submittedText is not empty %}
+        <h2>Przesłany tekst:</h2>
+
+        <p>{{ submittedText|nl2br }}</p>
+        <p>{{ submittedText|raw }}</p>
+
+    {% endif %}
+{% endblock %}

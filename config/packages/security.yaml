@@ -24,7 +24,9 @@ security:
                 check_path: app_login
             logout:
                 path: app_logout
-
+            login_throttling:
+                max_attempts: 2 # per minute...
+                # interval: ‘5 minutes’ # ... or in custom period
             # Activate different ways to authenticate:
             # https://symfony.com/doc/current/security.html#the-firewall
 
